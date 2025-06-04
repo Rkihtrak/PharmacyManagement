@@ -3,7 +3,10 @@
 # Design Approach
 For this exercise I wanted to test the limits of Cursor, while keeping in check its limitations (if they exist). With my prior experience with using GPT4/3.5 I knew that building/startup issues would be the biggest shortcoming for relying on the tools. Therefore, I focused on using Cursor to setup a cookie cutter project by specifying tool to use.
 ### Initial Query to Cursor
-`setup a springboot java project for api development with docker, docker-compose, a dockerized nosql db with configuration and connection setup within the springboot java application. This should be setup with an NGINX load balancer and 3 application containers`
+```
+setup a springboot java project for api development with docker, docker-compose, a dockerized nosql db with configuration and connection setup within the springboot java application. This should be setup with an NGINX load balancer and 3 application containers
+```
+
 
 Instead of asking for any backend logic to be implemented, I kept things very high level, specifying the technologies to use, the architecture that I envision, and the server configurations.
 
@@ -17,8 +20,11 @@ fully cover the code with unit tests
 
 modify run.sh to have a flag to enable/disable running unit tests when launching the application
 ```
- 
-Following this, my interactions were mainly for debugging issues arising from running locally.
+
+In addition, I created a ***run.sh*** file, to launch the application and tests. I utilized Cursor to further add checks on build tools, dependencies, and dockerizing the test execution.
+
+Following this, my interactions with Cursor were mainly for debugging issues arising from running locally.
+
 
 # Issues Encountered
 ### Cursor/AI Related
@@ -26,7 +32,7 @@ Following this, my interactions were mainly for debugging issues arising from ru
 ##### 1. Building/Running was tedious
 Docker setup/configuration was by far the biggest shortcoming with using Cursor. This was expected based on my past experience:
 * It took multiple iterations of prompting and self debugging to get the application to build and run. Worse still, when reopening the same untouched and previously working codebase, Docker issues again plagued.
-* At one point, the original docker base image 
+* Cursor had to change my docker base image at least 5 times before a stable version was found, such that all build tools would succeed. Many times, running within Cursor would not show build issues; these were only seen when running separately within terminal.
 ##### 2. Cursor did not properly handle my second logic query
 ```
 - Rename "Item" and all its references to "PharmacyItem" 

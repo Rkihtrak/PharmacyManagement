@@ -62,12 +62,6 @@ if [ "$RUN_TESTS" = true ]; then
     echo "Tests passed successfully!"
 fi
 
-# Build and run the application
-echo "Building and running the application..."
-docker-compose down --remove-orphans
-docker-compose build
-docker-compose up -d --remove-orphans
-
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -159,19 +153,11 @@ mkdir -p logs
 # Set correct permissions for MongoDB directory
 chmod 777 data/mongodb
 
-# Build the project with Maven
-print_message "Building the project..."
-if [ "$RUN_TESTS" = true ]; then
-    print_message "Skipping local build as tests will be run in Docker"
-else
-    if [ -f "./mvnw" ]; then
-        chmod +x ./mvnw
-        ./mvnw clean package -DskipTests
-    else
-        print_error "Maven wrapper not found. Please ensure you're in the correct directory."
-        exit 1
-    fi
-fi
+# Build and run the application
+echo "Building and running the application..."
+docker-compose down --remove-orphans
+docker-compose build
+docker-compose up -d --remove-orphans
 
 # Wait for services to be ready
 print_message "Waiting for services to start..."
