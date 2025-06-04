@@ -162,6 +162,10 @@ Default configuration:
    - Check permissions on `data/mongodb` directory
    - Verify MongoDB container logs
 
+3. If Docker Certificate/Keychain issues occur:
+   - Navigate to ~/.docker/config.json and change "credsStore" to "credStore" or remove the line
+   - This issue will occur because of host side credential checking which isn't needed when not running in an enterprise environment
+
 ## Security Notes
 
 - Default MongoDB credentials should be changed in production
