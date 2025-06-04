@@ -1,0 +1,38 @@
+spring:
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      database: surecost
+      authentication-database: admin
+      username: root
+      password: example
+
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# SpringDoc OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    tryItOutEnabled: true
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true
+  use-management-port: false
+  paths-to-match: /api/** 

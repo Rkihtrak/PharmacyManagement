@@ -1,0 +1,23 @@
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Compiled files
+target/
+*.class
+*.jar
+
+# Logs
+*.log
+
+# MongoDB data
+data/mongodb/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Environment variables
+.env 
